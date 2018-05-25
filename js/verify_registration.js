@@ -27,7 +27,7 @@ function verifyAddress(address) {
 
 function eosAmountAtAddress(address) {
   var balance = null;
-  var ethplorerApiAddressInfoRequestUrl = "https://api.ethplorer.io/getAddressInfo/0x4A2F02F1A4B9Da902499Fa677Cf3395044d14EE0?apiKey=freekey";
+  var ethplorerApiAddressInfoRequestUrl = "https://api.ethplorer.io/getAddressInfo/" + address + "?apiKey=freekey";
   $.ajax({
       url: ethplorerApiAddressInfoRequestUrl,
       type: "GET",
