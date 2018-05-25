@@ -12,6 +12,12 @@ var render = ({
          onClick={event => (generate(), event.preventDefault())}>
         Generate EOS key
       </a>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <h1>Want to verify your EOS registration?</h1>
+      <a href="/verify-registration">Use our registration verification tool</a>
     </div>
     <div className="hidden pane" id="generate-pane">
       <span id="generate-progress">
@@ -33,9 +39,7 @@ var render = ({
           </table>
         </p> : <span></span>}
 
-        <p>Please back up the private key displayed below in multiple
-        safe locations before continuing.  You should make more than
-        one copy and keep all copies in separate secure locations.</p>
+        <p>Please back up the private key displayed below in multiple safe locations before continuing.</p>
 
         <table>
           <tbody>
@@ -62,12 +66,14 @@ var render = ({
         </table>
 
         <p>
-
           There is no way to recover your private key.  You must save
           it right now or you will be unable to access your EOS tokens
           when the sale ends.
-
         </p>
+        <br/>
+        <br/>
+        <h1>Want to verify your EOS registration?</h1>
+        <a href="/verify-registration">Use our registration verification tool</a>
       </div>
     </div>
   </div>

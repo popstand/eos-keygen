@@ -60,18 +60,19 @@ h3 {
 }
 
 .pane {
+  border-radius: 10px;
   font-size: 0.8em;
   width: 600px;
-  height: 350px;
+  height: 400px;
   margin: 0 auto;
-  background: #eee;
+  background-color: rgba(243, 243, 243, 0.9);
   padding: 20px;
   text-align: center;
   padding: 50px 45px;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -175px 0 0 -300px;
+  margin: -200px 0 0 -300px;
 }
 
 #particles-js {
@@ -82,4 +83,8 @@ h3 {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+}
+
+#address {
+  width: 330px;
 }
