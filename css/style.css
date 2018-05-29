@@ -1376,7 +1376,7 @@ select:focus { outline: none; border: none; }
 @media only screen and (max-width: 320px) { .social { margin: 15px 0 0; } }
 .subscribe-section { background: url(../images/footer-bg.png) no-repeat 50% 0%/contain, #10122d; padding-top: 50px !important }
 .theme-light .subscribe-section, .io-dark-light .section-light .subscribe-section, .io-dark-light .section-light-alt .subscribe-section { background: url(../images/footer-bg.png) no-repeat 50% 0%/contain, #eff6ff; }
-.subscribe-scetion { padding-top: 50px;  padding-bottom: 100px; }
+.subscribe-scetion { padding-top: 160px;  padding-bottom: 80px; }
 .copyright-text { font-size: 13px; display: block; margin-top: 40px; }
 .copyright-text span { display: block; color: #8284a5; }
 .io-azure .copyright-text { color: #7ab9ff; }
