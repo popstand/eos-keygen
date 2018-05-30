@@ -2,9 +2,25 @@ $(document).ready(function(){
   $('.btn-generate-keys').on('click', function(e){
     e.preventDefault();
 
-    $('.generated-keys').html("<br/>Public key: " + genKeyPair().pubkey + "<br/>Private key: " + genKeyPair().privkey);
-  })
-})
+    $('.generated-keys').html(
+      "<br/><span>Public key:</span>  <input type='text' value='" + genKeyPair().pubkey + "'><br/>" +
+      "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Private key:</span>  <input type='password' id='private-key' value='" + genKeyPair().privkey + "'> <div class='show-private-key'>[show]</div>"
+    )
+  });
+
+  $(document).on('click', '.show-private-key', function(){
+    $privateKey = $('#private-key');
+    $toggle = $('.show-private-key');
+    if($privateKey.attr('type') == 'text'){
+      $privateKey.attr('type', 'password');
+      $toggle.html('[show]');
+    } else {
+      $privateKey.attr('type', 'text');
+      $toggle.html('[hide]');
+    }
+
+  });
+});
 
 
 function genKeyPair() {
