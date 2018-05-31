@@ -2235,7 +2235,7 @@ select:focus { outline: none; border: none; }
 .verification-results { margin-top: 30px; font-weight: bold; }
 /** END */
 .generated-keys { font-family: Courier; }
-.generated-keys input { width: 470px;  color: white;  background: transparent;  border: 0; }
+.generated-keys input { width: 480px;  color: white;  background: transparent;  border: 0; }
 .generated-keys span { width: 120px;  text-align: right;  display: inline-block; }
 
 .show-private-key { font-size: 10px; display: inline-block; }
