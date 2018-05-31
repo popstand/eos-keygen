@@ -2,9 +2,11 @@ $(document).ready(function(){
   $('.btn-generate-keys').on('click', function(e){
     e.preventDefault();
 
+    var keyPair = genKeyPair();
+
     $('.generated-keys').html(
-      "<br/><span>Public key:</span>  <input type='text' value='" + genKeyPair().pubkey + "'><br/>" +
-      "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Private key:</span>  <input type='password' id='private-key' value='" + genKeyPair().privkey + "'> <div class='show-private-key'>[show]</div>"
+      "<br/><span>Public key:</span>  <input type='text' value='" + keyPair.pubkey + "'><br/>" +
+      "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Private key:</span>  <input type='password' id='private-key' value='" + keyPair.privkey + "'> <div class='show-private-key'>[show]</div>"
     )
   });
 
