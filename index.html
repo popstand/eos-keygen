@@ -122,22 +122,39 @@
 			<div class="row pt-1">
 				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-0 order-md-0 order-sm-1 order-1">
 					<div class="gaps"></div>
-					<div class="features-item right animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-5" data-animate="fadeInUp" data-delay=".3">
+					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 mb-1 pb-3" data-animate="fadeInUp" data-delay=".3">
+						<h5 class="pl-3">EOS Server</h5>
+						<p>
+							<select onchange="getProducers()" class="form-control" id="network">
+								<option value="http://jungle.libertyblock.io:8888">Jungle Testnet</option>
+								<option value="http://mainnet.libertyblock.io:8888" disabled>EOS Mainnet</option>
+						 </select>
+ 						</p>
+					</div>
+					<div class="features-item right animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-3" data-animate="fadeInUp" data-delay=".4">
 						<h5 class="pl-3">Account Name</h5>
 						<p><input id="eos-account" class="input-round" placeholder="EOS Account"></p>
 					</div>
-					<div class="features-item right animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-4" data-animate="fadeInUp" data-delay=".4">
-						<h5 class="pl-3">Private Key</h5>
+					<div class="features-item right animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-4" data-animate="fadeInUp" data-delay=".5">
+						<h5 class="pl-3">Signing Method</h5>
 						<p>
-							<input type="radio" name="signing-method" onchange="toggleKeyInput()" value="key" checked style="display:none;">
+							<div class="pl-3 pb-3">
+								<label style="vertical-align: middle;">
+	                <input type="radio" class="vote-radio"name="signing-method" value="scatter" onchange="toggleKeyInput()">
+	                <span>Scatter</span>
+	            	</label>
+								<br/>
+								<label>
+	                <input type="radio" class="vote-radio" name="signing-method" onchange="toggleKeyInput()" value="key" checked >
+	                Private Key
+	            	</label>
+							</div>
+
+
 			        <input id="private-key" class="input-round" placeholder="Private key">
 						</p>
 					</div>
-					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 mt-4 mb-1 pb-5" data-animate="fadeInUp" data-delay=".4">
-						<h5 class="pl-3">EOS Server</h5>
-						<p><input id="eos-server" class="input-round" placeholder="Select EOS Server"></p>
-					</div>
-					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 mt-1 mb-2 pb-5 text-center" data-animate="fadeInUp" data-delay=".7">
+					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 mt-1 mb-2 pb-5 text-center" data-animate="fadeInUp" data-delay=".8">
 						<p>
 							<label><strong>Selected Producers (<span id="selected-count">0</span>): </strong></label>
 							<span id="selected-bps"></span>
@@ -147,11 +164,11 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-2 order-md-1 order-sm-0 order-0">
 					<div class="gaps"></div>
-					<div class="features-item animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-3" data-animate="fadeInUp" data-delay=".5">
+					<div class="features-item animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-3" data-animate="fadeInUp" data-delay=".6">
 						<h5 class="pl-3">Block Producers</h5>
 						<p><input type="search" id="filter-prods" class="input-round" placeholder="Filter Producers" onkeyup="filterProds()"></p>
 					</div>
-					<div class="features-item block-producers animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-5 mb-4 text-center" data-animate="fadeInUp" data-delay=".6">
+					<div class="features-item block-producers animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-5 mb-4 text-center" data-animate="fadeInUp" data-delay=".7">
 				    <table id="block-producers" class="table">
 				        <thead><tr>
 				            <th>Vote</th>
@@ -213,5 +230,15 @@
 	<script src=js/registration_verifier.js></script>
   <script src="js/eosjs-browser.js"></script>
   <script src="js/main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src=“https://www.googletagmanager.com/gtag/js?id=UA-120243218-3“></script>
+	<script>
+	 window.dataLayer = window.dataLayer || [];
+	 function gtag(){dataLayer.push(arguments);}
+	 gtag(‘js’, new Date());
+
+	 gtag(‘config’, ‘UA-120243218-3’);
+	</script>
 </body>
 </html>

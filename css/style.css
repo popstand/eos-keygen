@@ -2263,6 +2263,51 @@ select:focus { outline: none; border: none; }
 }
 
 .block-producers {
-  max-height: 380px;
+  max-height: 420px;
   overflow: scroll;
+}
+
+.vote-radio {
+  margin-top: 7px;
+  vertical-align: top;
+  margin-right: 3px;
+}
+
+.select2-selection__arrow {
+  margin-top: .25rem !important;
+  margin-right: .4rem !important;
+}
+
+.select2-container--default .select2-selection--single {
+  width: 100%;
+  line-height: 20px;
+  color: #38385f;
+  font-size: 1em;
+  padding: 4px 11px;
+  border-radius: 26px;
+  outline: none;
+  border: 1px solid rgba(93, 70, 232, 0);
+  height: 52px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  font-size: 1em !important;
+}
+
+.select2-results__option {
+  background: rgba(93, 70, 232, 0.6) !important;
+  opacity:0.8;
+  color: white !important;
+}
+.select2-results__option[aria-selected=true] {
+  background: rgba(93, 70, 232, 1) !important;
+  opacity:0.8;
+}
+.select2-results__option[aria-disabled=true] {
+  color: #999 !important;
+  background: rgba(93, 70, 232, 0.3) !important;
+  opacity:0.8;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background: rgba(93, 70, 232, 1) !important;
 }
