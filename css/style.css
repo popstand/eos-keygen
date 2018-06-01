@@ -2239,3 +2239,13 @@ select:focus { outline: none; border: none; }
 .generated-keys span { width: 120px;  text-align: right;  display: inline-block; }
 
 .show-private-key { font-size: 10px; display: inline-block; }
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+  .generated-keys { font-size: 10px !important; }
+  .generated-keys input { width: 420px !important; }
+  .generated-keys span { width: 100% !important;  text-align: center !important;  display: block !important; }
+
+
+}

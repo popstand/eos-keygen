@@ -6,24 +6,22 @@ $(document).ready(function(){
 
     $('.generated-keys').html(
       "<br/><span>Public key:</span>  <input type='text' value='" + keyPair.pubkey + "'><br/>" +
-      "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Private key:</span>  <input type='password' id='private-key' value='" + keyPair.privkey + "'> <div class='show-private-key'>[show]</div>"
+      "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Private key:</span>  <input type='password' id='private-key' value='" + keyPair.privkey + "'> <div class='show-private-key' onclick=togglePrivateKeyVisibility();>[show]</div>"
     )
-  });
-
-  $(document).on('click', '.show-private-key', function(){
-    $privateKey = $('#private-key');
-    $toggle = $('.show-private-key');
-    if($privateKey.attr('type') == 'text'){
-      $privateKey.attr('type', 'password');
-      $toggle.html('[show]');
-    } else {
-      $privateKey.attr('type', 'text');
-      $toggle.html('[hide]');
-    }
-
   });
 });
 
+function togglePrivateKeyVisibility() {
+  $privateKey = $('#private-key');
+  $toggle = $('.show-private-key');
+  if($privateKey.attr('type') == 'text'){
+    $privateKey.attr('type', 'password');
+    $toggle.html('[show]');
+  } else {
+    $privateKey.attr('type', 'text');
+    $toggle.html('[hide]');
+  }
+}
 
 function genKeyPair() {
     var {PrivateKey, PublicKey} = eos_ecc
