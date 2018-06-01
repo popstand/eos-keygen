@@ -48,7 +48,14 @@ function filterProds () {
 
 function getEos() {
     var method = document.querySelector('input[name="signing-method"]:checked').value;
-    var network = document.getElementById('network').value;
+    var network = "";
+    if ( document.getElementById("producers-select").classList.contains('invisible') ) {
+      network = document.getElementById('custom-network').value;
+    } else {
+      network = document.getElementById('network').value;
+    }
+
+
     var ip = network.slice(network.lastIndexOf("/") + 1, network.lastIndexOf(":"));
     var port = network.slice(network.lastIndexOf(":") + 1);
     if (method == "scatter") {
@@ -137,6 +144,18 @@ function refreshKeys() {
             </div>`
             document.getElementById('alerts').innerHTML = alert;
         });
+}
+
+function changeServerInput() {
+  if (document.getElementById('custom-server').checked) {
+    document.getElementById('producers-select').classList.add('invisible');
+    document.getElementById('custom-server-input').classList.remove('invisible');
+  } else {
+    document.getElementById('producers-select').classList.remove('invisible');
+    document.getElementById('custom-server-input').classList.add('invisible');
+    document.getElementById('custom-network').value = "";
+    getProducers();
+  }
 }
 
 function vote () {

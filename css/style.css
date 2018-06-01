@@ -2267,8 +2267,16 @@ select:focus { outline: none; border: none; }
   overflow: scroll;
 }
 
+.invisible { display: none; }
+
 .vote-radio {
   margin-top: 7px;
+  vertical-align: top;
+  margin-right: 3px;
+}
+
+.vote-checkbox {
+  margin-top: 8px;
   vertical-align: top;
   margin-right: 3px;
 }
