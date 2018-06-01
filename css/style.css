@@ -974,7 +974,7 @@ select:focus { outline: none; border: none; }
 .btns li { display: inline-block; margin: 10px 15px; }
 .btns li a:not(.btn) { margin-right: 10px; }
 
-@media only screen and (max-width: 480px) { .btn { font-size: 10px; min-width: 110px; line-height: 40px; padding: 0 15px; }
+@media only screen and (max-width: 480px) { .btn { font-size: 10px; min-width: 110px; line-height: 40px; padding: 0 7px; }
   .btn-img { max-width: 110px; }
   .btns { margin: 0 -3px; }
   .btns li { margin: 10px 3px; } }
@@ -1923,7 +1923,7 @@ select:focus { outline: none; border: none; }
   .process-scetion .slider-nav-item .ikon { font-size: 20px; line-height: 45px; } }
 .features-photo { padding: 0 15px; }
 .features-photo img { border-radius: 0; }
-.features-item { position: relative; padding-left: 105px; margin-top: 50px; padding-bottom: 40px; }
+.features-item { position: relative;}
 .features-item h5 { margin-bottom: 8px; }
 .features-item .ti { position: absolute; top: 0; left: 10px; font-size: 30px; height: 65px; width: 65px; line-height: 65px; text-align: center; border-radius: 50%; background: #40beff; color: #fff; display: inline-block; }
 .features-item.left { padding-left: 0; padding-right: 105px; text-align: right; }
@@ -2241,6 +2241,7 @@ select:focus { outline: none; border: none; }
 .show-private-key { font-size: 10px; display: inline-block; }
 
 
+
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
   .generated-keys { font-size: 10px !important; }
@@ -2248,4 +2249,20 @@ select:focus { outline: none; border: none; }
   .generated-keys span { width: 100% !important;  text-align: center !important;  display: block !important; }
 
 
+}
+
+.features-section .input-round {
+    width: 100%;
+    line-height: 20px;
+    color: #38385f;
+    font-size: 1em;
+    padding: 15px 30px;
+    border-radius: 26px;
+    outline: none;
+    border: 1px solid rgba(93, 70, 232, 0);
+}
+
+.block-producers {
+  max-height: 380px;
+  overflow: scroll;
 }

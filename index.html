@@ -82,9 +82,9 @@
 
 	<!-- Start Section -->
 	<div class="section subscribe-scetion section-pad section-bg-light" id="subscribe">
-		<div class="container">
-			<div class="row  justify-content-center text-center">
-				<div class="col-lg-7 res-l-bttm">
+		<div class="container mt-5">
+			<div class="row justify-content-center text-center">
+				<div class="col-lg-7 mt-5 res-l-bttm">
 					<div class="subscribe-rounded">
 						<h5 class="animated" data-animate="fadeInUp" data-delay=".1">Need to verify your EOS registration?</h5>
 						<p class="animated" data-animate="fadeInUp" data-delay=".2">Enter your public address below to continue.</p>
@@ -97,6 +97,72 @@
 					</div>
 				</div><!-- .col  -->
 			</div><!-- .row  -->
+		</div><!-- .container  -->
+	</div>
+	<!-- End Section -->
+
+	<!-- Start Section -->
+	<div class="section features-section section-pad no-pb section-bg-lavendar">
+		<div class="shade-wraper">
+			<div class="container">
+				<div class="shade-left"></div>
+				<div class="shade-right"></div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="section-head-s3 text-center mb-4">
+				<h1 class="section-title animated" data-animate="fadeInUp" data-delay=".1">EOS Block <div class="d-xl-none d-lg-none d-md-none"></div>Producer Voting</h1>
+				<p class="animated text-white" data-animate="fadeInUp" data-delay=".2">We will only use your private key to sign the transaction locally. Your key will never leave the local machine!</p>
+			</div>
+			<section id="alerts">
+					<div class="alert alert-warning" role="alert" style="display:none;">
+							We will only use your private key to sign the transaction locally. Your key will never leave the local machine!
+					 </div>
+			</section>
+			<div class="row pt-1">
+				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-0 order-md-0 order-sm-1 order-1">
+					<div class="gaps"></div>
+					<div class="features-item right animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-5" data-animate="fadeInUp" data-delay=".3">
+						<h5 class="pl-3">Account Name</h5>
+						<p><input id="eos-account" class="input-round" placeholder="EOS Account"></p>
+					</div>
+					<div class="features-item right animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-4" data-animate="fadeInUp" data-delay=".4">
+						<h5 class="pl-3">Private Key</h5>
+						<p>
+							<input type="radio" name="signing-method" onchange="toggleKeyInput()" value="key" checked style="display:none;">
+			        <input id="private-key" class="input-round" placeholder="Private key">
+						</p>
+					</div>
+					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 mt-4 mb-1 pb-5" data-animate="fadeInUp" data-delay=".4">
+						<h5 class="pl-3">EOS Server</h5>
+						<p><input id="eos-server" class="input-round" placeholder="Select EOS Server"></p>
+					</div>
+					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 mt-1 mb-2 pb-5 text-center" data-animate="fadeInUp" data-delay=".7">
+						<p>
+							<label><strong>Selected Producers (<span id="selected-count">0</span>): </strong></label>
+							<span id="selected-bps"></span>
+						</p>
+						<button id="vote" class="btn btn-white" onclick="vote()">Vote</button>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-2 order-md-1 order-sm-0 order-0">
+					<div class="gaps"></div>
+					<div class="features-item animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-3" data-animate="fadeInUp" data-delay=".5">
+						<h5 class="pl-3">Block Producers</h5>
+						<p><input type="search" id="filter-prods" class="input-round" placeholder="Filter Producers" onkeyup="filterProds()"></p>
+					</div>
+					<div class="features-item block-producers animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-5 mb-4 text-center" data-animate="fadeInUp" data-delay=".6">
+				    <table id="block-producers" class="table">
+				        <thead><tr>
+				            <th>Vote</th>
+				            <th>Producer Name</th>
+				            <th>Current Votes</th>
+				        </tr></thead>
+								<tbody></tbody>
+				    </table>
+					</div>
+				</div>
+			</div>
 		</div><!-- .container  -->
 	</div>
 	<!-- End Section -->
@@ -145,5 +211,7 @@
 	<script src=js/vendor/lib.js></script>
 	<script src=js/key_generator.js></script>
 	<script src=js/registration_verifier.js></script>
+  <script src="js/eosjs-browser.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
