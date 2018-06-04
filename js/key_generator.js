@@ -5,14 +5,33 @@ $(document).ready(function(){
     var keyPair = genKeyPair();
 
     $('.generated-keys').html(
-      "<br/><span>Public key:</span>  <input type='text' value='" + keyPair.pubkey + "'><br/>" +
-      "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Private key:</span>  <input type='password' id='private-key' value='" + keyPair.privkey + "'> <div class='show-private-key' onclick=togglePrivateKeyVisibility();>[show]</div>"
+      "<div class='public-key'><span>Public key:</span> <span class='copied' id='public-copied'>Copied!</span><input type='text' id='public-key-input' onclick='copyPublicToClipboard();' value='" + keyPair.pubkey + "'></div>" +
+      "<div class='private-key'><span>Private key:</span> <span class='show-private-key' onclick=togglePrivateKeyVisibility();>[show]</span> <span class='copied' id='private-copied'>Copied!</span><input type='password' id='private-key-input' onclick='copyPrivateToClipboard();' value='" + keyPair.privkey + "'></div>"
     )
   });
 });
 
+function copyPublicToClipboard() {
+  var copyText = document.getElementById("public-key-input");
+  copyText.select();
+  document.execCommand("copy");
+  $('#public-copied').fadeIn("slow");
+  $('#public-copied').delay(1500).fadeOut("slow");
+}
+
+function copyPrivateToClipboard() {
+  $privateKey = $('#private-key-input');
+  if($privateKey.attr('type') == 'text'){
+    var copyText = document.getElementById("private-key-input");
+    copyText.select();
+    document.execCommand("copy");
+    $('#private-copied').fadeIn("slow");
+    $('#private-copied').delay(1500).fadeOut("slow");
+  }
+}
+
 function togglePrivateKeyVisibility() {
-  $privateKey = $('#private-key');
+  $privateKey = $('#private-key-input');
   $toggle = $('.show-private-key');
   if($privateKey.attr('type') == 'text'){
     $privateKey.attr('type', 'password');
@@ -52,6 +71,7 @@ function genKeyPair() {
       privkey = 'DO NOT USE'
       pubkey = 'DO NOT USE'
     }
-
+    $('#about-text').animate({ "left": "0px" }, "slow" );
+    $('.keys').show();
     return {pubkey, privkey, pubkeyError, privkeyError}
 }
