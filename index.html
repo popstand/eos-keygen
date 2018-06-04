@@ -7,7 +7,7 @@
 	<meta name="description" content="Generate EOS key pairs securely - the generation happens in your browser client. For extra security, we recommend using an incognito window to disable all browser plugins.">
 
 	<!-- Site Title  -->
-	<title>Secure Keypair Generation & Registration Verification for EOS</title>
+	<title>EOS Block Producer Voting, Registration Verification & Secure Keypair Generation</title>
 	<!-- Vendor Bundle CSS -->
 	<link rel="stylesheet" href="css/vendor.bundle.css?ver=122">
 	<!-- Custom styles for this template -->
@@ -24,66 +24,121 @@
 </head>
 
 <body class="theme-lavendar io-lavendar" data-spy="scroll" data-target="#mainnav" data-offset="80">
-
-	<!-- Header -->
+	<!-- Start Header -->
 	<header class="site-header is-sticky">
 		<!-- Navbar -->
 		<div class="navbar navbar-expand-lg is-transparent" id="mainnav">
 			<nav class="container">
 
-				<a class="navbar-brand animated" data-animate="fadeInDown" data-delay=".65" href="./">
+				<a class="navbar-brand animated" data-animate="fadeInDown" data-delay="1.6" href="/">
 					<img class="logo logo-dark" alt="logo" src="images/eos-logo-color.png" srcset="images/eos-logo-color.png 2x">
 					<img class="logo logo-light" alt="logo" src="images/eos-logo-white.png" srcset="images/eos-logo-white.png 2x">
 				</a>
-			</nav>
-		</div>
-		<!-- End Navbar -->
 
-		<!-- Banner/Slider -->
-		<div id="header" class="banner">
-			<div class="banner-rounded-bg">
-				<!-- Place Particle Js -->
-				<div id="particles-js" class="particles-container particles-js"></div>
-				<span class="banner-shade-1">
-					<span class="banner-shade-2">
-						<span class="banner-shade-3"></span>
-					</span>
-				</span>
-			</div>
-			<div class="container">
-				<div class="banner-content">
-					<div class="row text-center">
-						<div class="col-lg-12">
-							<div class="header-txt">
-								<h1 class="animated" data-animate="fadeInUp" data-delay="1.25"><span>Secure</span> Keypair <span>Generation for </span>EOS</h1>
-								<p class="lead animated" data-animate="fadeInUp" data-delay="1.35">This form creates EOS key pairs securely - the generation happens in your browser client.<br class="d-none d-xl-block">For extra security, we recommend using an incognito window to disable all browser plugins.</p>
-								<div class="visible-inline-block animated"  data-animate="fadeInUp" data-delay="1.4">
-									<a class="nav-link btn btn-white btn-sm menu-link btn-generate-keys" href="#">Generate Keys</a>
-								</div>
-								<div class="generated-keys"></div>
-							</div>
-						</div><!-- .col  -->
-					</div><!-- .row  -->
-				</div><!-- .banner-content  -->
-				<!--
-				<div class="row justify-content-center text-center">
-					<div class="col-lg-8">
-						<div class="gaps size-0-5x"></div>
-						<div class="token-box shadow animated" data-animate="fadeInUp" data-delay="1.65">
-							<h6 class="small-text">EOS Mainnet Launch:</h6>
-							<div class="token-countdown d-flex align-content-stretch" data-date="2018/06/02 15:00"></div>
-						</div>
-					</div>
+				<div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
+					<ul class="navbar-nav animated remove-animation" data-animate="fadeInDown" data-delay="1.6">
+						<li class="nav-item"><a class="nav-link menu-link" href="#vote-section">Cast Vote</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="#verify-registration-section">Verify Registration</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="#keypair-generation-section">Keypair Generation</a></li>
+					</ul>
 				</div>
-			-->
-			</div><!-- .container
+			</nav>
 		</div>
 	</header>
 	<!-- End Header -->
 
+	<!-- Start Section -->
+	<div id="vote-section" class="section features-section section-features-pad no-pb section-bg-lavendar">
+		<!-- Place Particle Js -->
+		<div id="particles-js" class="particles-container particles-js"></div>
+		<div class="shade-wraper">
+			<div class="container">
+				<div class="shade-left"></div>
+				<div class="shade-right"></div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="section-head-s3 text-center mb-4">
+				<h1 class="section-title animated" data-animate="fadeInDown" data-delay=".2">EOS <span class="heading-alt">Block Producer</span> Voting</h1>
+				<p class="animated text-white" data-animate="fadeInDown" data-delay=".3">We will only use your private key to sign the transaction locally. Your key will never leave the local machine!</p>
+			</div>
+			<section id="alerts">
+					<div class="alert alert-warning toggle-hidden" role="alert">
+							We will only use your private key to sign the transaction locally. Your key will never leave the local machine!
+					 </div>
+			</section>
+			<div class="row pt-1">
+				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-0 order-md-0 order-sm-1 order-1">
+					<div class="gaps"></div>
+					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-3" data-animate="fadeInLeft" data-delay=".4">
+						<h5 class="pl-3">EOS Server</h5>
+						<p id="producers-select">
+							<select onchange="getProducers()" class="form-control" id="network">
+								<option value="http://jungle.libertyblock.io:8888" >Jungle Testnet</option>
+								<option value="http://mainnet.libertyblock.io:8888" disabled>EOS Mainnet</option>
+						 </select>
+ 						</p>
+						<p id="custom-server-input" class="invisible">
+							<input id="custom-network" class="input-round" onblur="getProducers()" placeholder="http://mainnet.libertyblock.io:8888">
+						</p>
+						<div class="custom-server text-right">
+							<label><input id="custom-server" onclick="changeServerInput()" class="vote-checkbox pr-1" type="checkbox" value="">Use Custom Network</label>
+						</div>
+					</div>
+					<div class="features-item right animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-3" data-animate="fadeInLeft" data-delay=".5">
+						<h5 class="pl-3">Account Name</h5>
+						<p><input id="eos-account" class="input-round" placeholder="EOS Account"></p>
+					</div>
+					<div class="features-item right animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-4" data-animate="fadeInLeft" data-delay=".6">
+						<h5 class="pl-3">Signing Method</h5>
+						<p>
+							<div class="row pl-3 pb-3">
+								<label class="ml-3">
+	                <input type="radio" class="vote-radio" name="signing-method" value="scatter" onchange="toggleKeyInput()">
+	                <span>Scatter</span>
+	            	</label>
+								<label class="ml-3">
+	                <input type="radio" class="vote-radio" name="signing-method" onchange="toggleKeyInput()" value="key" checked >
+	                Private Key
+	            	</label>
+							</div>
+
+
+			        <input id="private-key" class="input-round" placeholder="Private Key">
+						</p>
+					</div>
+					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 mt-1 mb-2 pb-5 text-center" data-animate="fadeInUp" data-delay="1.2">
+						<p>
+							<label><strong>Selected Producers (<span id="selected-count">0</span>): </strong></label>
+							<span id="selected-bps"></span>
+						</p>
+						<button id="vote" class="btn btn-white" onclick="vote()">Cast Vote</button>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-2 order-md-1 order-sm-0 order-0">
+					<div class="gaps"></div>
+					<div class="features-item animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-3" data-animate="fadeInRight" data-delay=".7">
+						<h5 class="pl-3">Block Producers</h5>
+						<p><input type="search" id="filter-prods" class="input-round" placeholder="Filter Producers" onkeyup="filterProds()"></p>
+					</div>
+					<div class="features-item block-producers animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-5 mb-4 text-center" data-animate="fadeInRight" data-delay=".8">
+				    <table id="block-producers" class="table">
+				        <thead><tr>
+				            <th>Vote</th>
+				            <th>Producer Name</th>
+				            <th>Current Votes</th>
+				        </tr></thead>
+								<tbody></tbody>
+				    </table>
+					</div>
+				</div>
+			</div>
+		</div><!-- .container  -->
+	</div>
+	<!-- End Section -->
 
 	<!-- Start Section -->
-	<div class="section subscribe-scetion section-pad section-bg-light" id="subscribe">
+	<div id="verify-registration-section" class="section subscribe-scetion section-pad section-bg-light" id="subscribe">
 		<div class="container mt-5 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0">
 			<div class="row justify-content-center text-center">
 				<div class="col-lg-7 mt-5 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0 res-l-bttm">
@@ -104,90 +159,32 @@
 	<!-- End Section -->
 
 	<!-- Start Section -->
-	<div class="section features-section section-pad no-pb section-bg-lavendar">
-		<div class="shade-wraper">
-			<div class="container">
-				<div class="shade-left"></div>
-				<div class="shade-right"></div>
-			</div>
-		</div>
+	<div id="keypair-generation-section" class="section about-section section-pad no-pt pb-5 section-bg-light" id="about">
 		<div class="container">
-			<div class="section-head-s3 text-center mb-4">
-				<h1 class="section-title animated" data-animate="fadeInUp" data-delay=".1">EOS Block <div class="d-xl-none d-lg-none d-md-none"></div>Producer Voting</h1>
-				<p class="animated text-white" data-animate="fadeInUp" data-delay=".2">We will only use your private key to sign the transaction locally. Your key will never leave the local machine!</p>
-			</div>
-			<section id="alerts">
-					<div class="alert alert-warning" role="alert" style="display:none;">
-							We will only use your private key to sign the transaction locally. Your key will never leave the local machine!
-					 </div>
-			</section>
-			<div class="row pt-1">
-				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-0 order-md-0 order-sm-1 order-1">
-					<div class="gaps"></div>
-					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-3" data-animate="fadeInUp" data-delay=".3">
-						<h5 class="pl-3">EOS Server</h5>
-						<p id="producers-select">
-							<select onchange="getProducers()" class="form-control" id="network">
-								<option value="http://jungle.libertyblock.io:8888" >Jungle Testnet</option>
-								<option value="http://mainnet.libertyblock.io:8888" disabled>EOS Mainnet</option>
-						 </select>
- 						</p>
-						<p id="custom-server-input" class="invisible">
-							<input id="custom-network" class="input-round" onblur="getProducers()" placeholder="http://mainnet.libertyblock.io:8888">
-						</p>
-						<div class="custom-server text-right">
-							<label><input id="custom-server" onclick="changeServerInput()" class="vote-checkbox pr-1" type="checkbox" value="">Use Custom Network</label>
+			<div class="row">
+				<div class="col-lg-6 col-xl-7">
+					<div class="about-section-innr text-center section-bg-lavendar">
+						<div class="about-shade"></div>
+						<div id="about-text" class="about-text-position">
+							<div class="keypair-txt pb-4">
+								<h1 class="animated" data-animate="fadeInUp" data-delay=".2"><span class="text-white">Secure</span> EOS Keypair <span class="text-white">Generation</span></h1>
+							</div>
+							<h3 class="animated" data-animate="fadeInUp" data-delay=".3">Create <span>EOS key pairs</span> securely.</h3>
+							<div class="visible-inline-block animated mb-5 mt-4"  data-animate="fadeInUp" data-delay="0.4">
+								<a class="nav-link btn btn-white btn-sm menu-link btn-generate-keys" href="#">Generate Keys</a>
+							</div>
+							<p class="animated" data-animate="fadeInUp" data-delay=".5">The generation happens in your browser client. </p>
+							<p class="animated" data-animate="fadeInUp" data-delay=".6">We recommend using an incognito window to disable all browser plugins.</p>
 						</div>
 					</div>
-					<div class="features-item right animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-3" data-animate="fadeInUp" data-delay=".4">
-						<h5 class="pl-3">Account Name</h5>
-						<p><input id="eos-account" class="input-round" placeholder="EOS Account"></p>
-					</div>
-					<div class="features-item right animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-4" data-animate="fadeInUp" data-delay=".5">
-						<h5 class="pl-3">Signing Method</h5>
-						<p>
-							<div class="row pl-3 pb-3">
-								<label class="ml-3">
-	                <input type="radio" class="vote-radio" name="signing-method" value="scatter" onchange="toggleKeyInput()">
-	                <span>Scatter</span>
-	            	</label>
-								<label class="ml-3">
-	                <input type="radio" class="vote-radio" name="signing-method" onchange="toggleKeyInput()" value="key" checked >
-	                Private Key
-	            	</label>
-							</div>
-
-
-			        <input id="private-key" class="input-round" placeholder="Private Key">
-						</p>
-					</div>
-					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 mt-1 mb-2 pb-5 text-center" data-animate="fadeInUp" data-delay=".8">
-						<p>
-							<label><strong>Selected Producers (<span id="selected-count">0</span>): </strong></label>
-							<span id="selected-bps"></span>
-						</p>
-						<button id="vote" class="btn btn-white" onclick="vote()">Vote</button>
-					</div>
 				</div>
-				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-2 order-md-1 order-sm-0 order-0">
-					<div class="gaps"></div>
-					<div class="features-item animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-3" data-animate="fadeInUp" data-delay=".6">
-						<h5 class="pl-3">Block Producers</h5>
-						<p><input type="search" id="filter-prods" class="input-round" placeholder="Filter Producers" onkeyup="filterProds()"></p>
-					</div>
-					<div class="features-item block-producers animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-5 mb-4 text-center" data-animate="fadeInUp" data-delay=".7">
-				    <table id="block-producers" class="table">
-				        <thead><tr>
-				            <th>Vote</th>
-				            <th>Producer Name</th>
-				            <th>Current Votes</th>
-				        </tr></thead>
-								<tbody></tbody>
-				    </table>
+				<div class="col-lg-5 keys toggle-hidden">
+					<div class="about-image animated" data-animate="fadeInUp" data-delay=".7">
+						<div class="generated-keys"></div>
 					</div>
 				</div>
 			</div>
-		</div><!-- .container  -->
+		</div>
 	</div>
 	<!-- End Section -->
 
@@ -197,12 +194,12 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-md-7">
+				<div class="col-md-8">
 					<span class="copyright-text">
-						Copyright &copy; 2018, Secure Keypair Generation for EOS
+						Copyright &copy; 2018 | Block Producer Voting, Registration Verification & Secure Keypair Generation for EOS
 					</span>
 				</div><!-- .col  -->
-				<div class="col-md-5 text-right mobile-left">
+				<div class="col-md-4 text-right mobile-left">
 					<ul class="footer-links">
 						<li><a href="https://github.com/popstand/eos-keygen" target="_blank">GitHub</a></li>
 					</ul>
