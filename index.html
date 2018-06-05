@@ -60,12 +60,14 @@
 		<div class="container">
 			<div class="section-head-s3 text-center mb-4">
 				<h1 class="section-title animated" data-animate="fadeInDown" data-delay=".2">EOS <span class="heading-alt">Block Producer</span> Voting</h1>
-				<p class="animated text-white" data-animate="fadeInDown" data-delay=".3">We will only use your private key to sign the transaction locally. Your key will never leave the local machine!</p>
+				<p class="animated text-white" data-animate="fadeInDown" data-delay=".3">
+					We will only use your private key to sign the transaction locally. Your key will never leave the local machine!
+					<br/>
+					<a class="menu-link http" href="http://eos.producer.vote">Click here</a> if block producers won't load.
+				</p>
 			</div>
 			<section id="alerts">
-					<div class="alert alert-warning toggle-hidden" role="alert">
-							We will only use your private key to sign the transaction locally. Your key will never leave the local machine!
-					 </div>
+					<div class="alert alert-warning toggle-hidden" role="alert"></div>
 			</section>
 			<div class="row pt-1">
 				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-0 order-md-0 order-sm-1 order-1">
@@ -74,12 +76,11 @@
 						<h5 class="pl-3">EOS Server</h5>
 						<p id="producers-select">
 							<select onchange="getProducers()" class="form-control" id="network">
-								<option value="http://jungle.libertyblock.io:8888" >Jungle Testnet</option>
-								<option value="http://mainnet.libertyblock.io:8888" disabled>EOS Mainnet</option>
+								<option value="http://201.148.208.116:48888" >EOS Mainnet</option>
 						 </select>
  						</p>
 						<p id="custom-server-input" class="invisible">
-							<input id="custom-network" class="input-round" onblur="getProducers()" placeholder="http://mainnet.libertyblock.io:8888">
+							<input id="custom-network" class="input-round" onblur="getProducers()" placeholder="http://mainnet.eos.io:48888">
 						</p>
 						<div class="custom-server text-right">
 							<label><input id="custom-server" onclick="changeServerInput()" class="vote-checkbox pr-1" type="checkbox" value="">Use Custom Network</label>
@@ -121,12 +122,11 @@
 						<h5 class="pl-3">Block Producers</h5>
 						<p><input type="search" id="filter-prods" class="input-round" placeholder="Filter Producers" onkeyup="filterProds()"></p>
 					</div>
-					<div class="features-item block-producers animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-5 mb-4 text-center" data-animate="fadeInRight" data-delay=".8">
+					<div class="features-item block-producers animated text-center pr-5" data-animate="fadeInRight" data-delay=".8">
 				    <table id="block-producers" class="table">
 				        <thead><tr>
 				            <th>Vote</th>
 				            <th>Producer Name</th>
-				            <th>Current Votes</th>
 				        </tr></thead>
 								<tbody></tbody>
 				    </table>
@@ -236,7 +236,7 @@
   <script src="js/voting.js"></script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src=“https://www.googletagmanager.com/gtag/js?id=UA-120243218-3“></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120243218-3"></script>
 	<script>
 	 window.dataLayer = window.dataLayer || [];
 	 function gtag(){dataLayer.push(arguments);}
