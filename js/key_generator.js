@@ -1,3 +1,10 @@
+window.onload=function(){
+  $(function(){
+    if(window.location.protocol==="https:")
+        window.location.protocol="http";
+  });
+}
+
 $(document).ready(function(){
   $('.btn-generate-keys').on('click', function(e){
     e.preventDefault();

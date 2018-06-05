@@ -2275,8 +2275,21 @@ select:focus { outline: none; border: none; }
 }
 
 .block-producers {
-  max-height: 420px;
+  max-height: 433px;
   overflow: scroll;
+}
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
 }
 
 .invisible { display: none; }
@@ -2330,4 +2343,8 @@ select:focus { outline: none; border: none; }
 }
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
     background: rgba(93, 70, 232, 1) !important;
+}
+
+a.http:hover {
+  color: #ff9258;
 }

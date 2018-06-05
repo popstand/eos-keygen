@@ -103,7 +103,6 @@ function getProducers() {
         sorted.map(prod => `<tr class="prod-row">
             <td><input type="checkbox" name="vote-prods" value="${prod.owner}"></td>
             <td>${prod.owner}</td>
-            <td>${prettyNumber(prod.total_votes)}</td>
         </tr>`)
         .forEach(row => tbody.innerHTML += row);
 
