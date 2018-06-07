@@ -16,7 +16,7 @@ function toggleKeyInput () {
         privateKeyInput.style.display = "none";
         if (typeof scatter === "undefined") {
             var alert = `<div class="alert alert-danger" role="alert">
-                Scatter is not installed. Refresh page after installing.
+                Scatter is not installed. <a class="menu-link http" href="https://scatter-eos.com/">https://scatter-eos.com/</a> Refresh page after installing.
             </div>`
             document.getElementById('alerts').innerHTML = alert;
             return false;
@@ -99,7 +99,8 @@ function getProducers() {
     tbody.innerHTML = '';
 
     return eos.getTableRows(params).then(resp => {
-        var sorted = resp.rows.sort((a,b) => Number(a.total_votes) > Number(b.total_votes) ? -1:1);
+                            //.sort((a,b) => Number(a.total_votes) > Number(b.total_votes) ? -1:1);
+        var sorted = resp.rows.sort(function(a, b){return 0.5 - Math.random()});
         sorted.map(prod => `<tr class="prod-row">
             <td><input type="checkbox" name="vote-prods" value="${prod.owner}"></td>
             <td>${prod.owner}</td>
@@ -149,10 +150,12 @@ function changeServerInput() {
   if (document.getElementById('custom-server').checked) {
     document.getElementById('producers-select').classList.add('invisible');
     document.getElementById('custom-server-input').classList.remove('invisible');
+    $('#eos-small').fadeIn( "fast" );
   } else {
     document.getElementById('producers-select').classList.remove('invisible');
     document.getElementById('custom-server-input').classList.add('invisible');
     document.getElementById('custom-network').value = "";
+    $('#eos-small').fadeOut( "fast" );
     getProducers();
   }
 }

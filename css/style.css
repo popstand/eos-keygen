@@ -2345,6 +2345,12 @@ html {
     background: rgba(93, 70, 232, 1) !important;
 }
 
+.eos-small {
+  float: right;
+  top: 3px;
+  position: relative;
+}
+
 a.http:hover {
   color: #ff9258;
 }

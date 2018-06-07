@@ -71,7 +71,7 @@
 				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-0 order-md-0 order-sm-1 order-1">
 					<div class="gaps"></div>
 					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-3" data-animate="fadeInLeft" data-delay=".4">
-						<h5 class="pl-3">EOS Server</h5>
+						<h5 class="pl-3">EOS Server <small id="eos-small" class="eos-small toggle-hidden">** using a Custom https:// EOS server <a class="menu-link http" href="https://eos.producer.vote">Click here</a></small></h5>
 						<p id="producers-select">
 							<select onchange="getProducers()" class="form-control" id="network">
 								<option value="http://201.148.208.116:48888" >Chain ID 0d6c</option>
@@ -92,11 +92,11 @@
 						<h5 class="pl-3">Signing Method</h5>
 						<p>
 							<div class="row pl-3 pb-3">
-								<label class="ml-3">
+								<label class="ml-3" id="sign-scatter">
 	                <input type="radio" class="vote-radio" name="signing-method" value="scatter" onchange="toggleKeyInput()">
 	                <span>Scatter</span>
 	            	</label>
-								<label class="ml-3">
+								<label class="ml-3" id="sign-private">
 	                <input type="radio" class="vote-radio" name="signing-method" onchange="toggleKeyInput()" value="key" checked >
 	                Private Key
 	            	</label>
@@ -112,8 +112,6 @@
 							<span id="selected-bps"></span>
 						</p>
 						<button id="vote" class="btn btn-white mb-4" onclick="vote()">Cast Vote</button>
-						<br/>
-						** if you are using a Custom https:// EOS server <a class="menu-link http" href="https://eos.producer.vote">Click here</a>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-2 order-md-1 order-sm-0 order-0">
@@ -205,6 +203,13 @@
 					</ul>
 				</div><!-- .col  -->
 			</div><!-- .row  -->
+			<div class="row">
+				<div class="col">
+					<span class="copyright-text text-white">
+						Provided for the good of the EOS community - donations will go to portal development - EOS6pAkdEwboGx3HTjzBUJXoCV5SViFUbj4tncj4egfW1wpXZJjN2
+					</span>
+				</div>
+			</div>
 		</div><!-- .container  -->
 		<div class="gaps size-2x"></div>
 	</div>
@@ -234,6 +239,7 @@
 	<script src=js/registration_verifier.js></script>
   <script src="js/eosjs-browser.js"></script>
   <script src="js/voting.js"></script>
+  <script src="js/scripts.js"></script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120243218-3"></script>
