@@ -98,7 +98,7 @@ function getProducers() {
     var tbody = document.querySelector("#block-producers tbody");
     tbody.innerHTML = '';
 
-    return eos.getTableRows(params).then(resp => {
+    eos.getTableRows(params).then(resp => {
                             //.sort((a,b) => Number(a.total_votes) > Number(b.total_votes) ? -1:1);
         var sorted = resp.rows.sort(function(a, b){return 0.5 - Math.random()});
         sorted.map(prod => `<tr class="prod-row">
@@ -111,6 +111,13 @@ function getProducers() {
             e.onclick = updateSelectedBPs;
         });
 
+    }).catch(err => {
+        var alert = `<div class="alert alert-danger" role="alert">
+            Failed to load Block Producers from the Custom Network.
+        </div>`;
+        document.getElementById('alerts').innerHTML = alert;
+
+        document.getElementById('vote').disabled = false;
     });
 
 }
@@ -144,20 +151,6 @@ function refreshKeys() {
             </div>`
             document.getElementById('alerts').innerHTML = alert;
         });
-}
-
-function changeServerInput() {
-  if (document.getElementById('custom-server').checked) {
-    document.getElementById('producers-select').classList.add('invisible');
-    document.getElementById('custom-server-input').classList.remove('invisible');
-    $('#eos-small').fadeIn( "fast" );
-  } else {
-    document.getElementById('producers-select').classList.remove('invisible');
-    document.getElementById('custom-server-input').classList.add('invisible');
-    document.getElementById('custom-network').value = "";
-    $('#eos-small').fadeOut( "fast" );
-    getProducers();
-  }
 }
 
 function vote () {

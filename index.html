@@ -60,18 +60,15 @@
 		<div class="container">
 			<div class="section-head-s3 text-center mb-4">
 				<h1 class="section-title animated" data-animate="fadeInDown" data-delay=".2">EOS <span class="heading-alt">Block Producer</span> Voting</h1>
-				<p class="animated text-white" data-animate="fadeInDown" data-delay=".3">
-					We will only use your private key to sign the transaction locally. Your key will never leave the local machine!
-				</p>
 			</div>
 			<section id="alerts">
 					<div class="alert alert-warning toggle-hidden" role="alert"></div>
 			</section>
-			<div class="row pt-1">
+			<div id="vote-system" class="row pt-1">
 				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-0 order-md-0 order-sm-1 order-1">
 					<div class="gaps"></div>
 					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-3" data-animate="fadeInLeft" data-delay=".4">
-						<h5 class="pl-3">EOS Server <small id="eos-small" class="eos-small toggle-hidden">** using a Custom https:// EOS server <a class="menu-link http" href="https://eos.producer.vote">Click here</a></small></h5>
+						<h5 class="pl-3">EOS Server</h5>
 						<p id="producers-select">
 							<select onchange="getProducers()" class="form-control" id="network">
 								<option value="http://201.148.208.116:48888" >Chain ID 0d6c</option>
@@ -81,7 +78,8 @@
 							<input id="custom-network" class="input-round" onblur="getProducers()" placeholder="http://mainnet.eos.io:48888">
 						</p>
 						<div class="custom-server text-right">
-							<label><input id="custom-server" onclick="changeServerInput()" class="vote-checkbox pr-1" type="checkbox" value="">Use Custom Network</label>
+							<small id="eos-small-https" class="eos-small toggle-hidden">** Enter a custom https://name-or-ip:port EOS API endpoint</small><small id="eos-small-http" class="eos-small toggle-hidden">** Enter a custom http://name-or-ip:port EOS API endpoint</small>
+							<label><input id="custom-server" class="vote-checkbox pr-1" type="checkbox" value="">Use Custom Network</label>
 						</div>
 					</div>
 					<div class="features-item right animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-3" data-animate="fadeInLeft" data-delay=".5">
@@ -215,6 +213,57 @@
 	</div>
 	<!-- End Section -->
 
+	<!-- Instructions Modal -->
+	<div class="modal fade" id="instructions" role="dialog">
+	    <div class="modal-dialog">
+
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header text-center">
+	          <h4 class="modal-title text-smoke mx-auto mt-3">
+							Welcome to EOS.Producer.Vote
+							<br/>
+							<small class="text-purple">There are two ways to vote using this site. Here are some instructions to help.</small>
+						</h4>
+	        </div>
+	        <div class="modal-body">
+						<div class="row">
+							<div class="col-12 col-xl-8 pt-2">
+								<p class="ml-1 ml-md-4 mt-2 text-smoke">
+									1. The recommended way is to use <a class="menu-link http" href="https://scatter-eos.com/">Scatter</a>
+									<br/>
+									<small class="small-instructions">Scatter plugin for Chrome or Firefox only supports HTTP</small>
+									<br/>
+									<small class="small-instructions ml-1 ml-md-3">
+										&bull; Please <a class="menu-link http" href="http://eos.producer.vote">click here</a> to load the voting system over HTTP
+									</small>
+								</p>
+								<p class="ml-1 ml-md-4 mt-2 text-smoke">
+									2. HTTPS is required to use your Private Key
+									<br/>
+									<small class="small-instructions">Your private key will never leave your browser</small>
+									<br/>
+									<small class="small-instructions ml-1 ml-md-3">&bull; A transaction hash is signed locally with your private key</small>
+									<br/>
+									<small class="small-instructions ml-1 ml-md-3">&bull; Then only the signed hash is sent to the network.</small>
+									<br/>
+									<small class="small-instructions ml-1 ml-md-3">&bull; Please <a class="menu-link http" href="https://eos.producer.vote">click here</a> to load the voting system over HTTPS</small>
+								</p>
+							</div>
+							<div class="col-xl-4 d-none d-xl-block">
+								<img class="pr-5" alt="logo" src="images/eos-black.png">
+							</div>
+						</div>
+	        </div>
+	        <div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">I understand!</button>
+	        </div>
+	      </div>
+
+	    </div>
+	  </div>
+	<!-- End Section -->
+
 	<!-- Preloader !remove please if you do not want -->
 	<div id="preloader">
 		<div id="loader"></div>
@@ -227,16 +276,16 @@
 	<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
 	<script src="js/vendor/jquery.bundle.js?ver=122"></script>
 	<script src="js/template.js?ver=122"></script>
-	<script src=js/vendor/async.min.js></script>
-	<script src=js/vendor/moment.min.js></script>
-	<script src=js/vendor/react.min.js></script>
-	<script src=js/vendor/react-dom.min.js></script>
-	<script src=js/vendor/babel.min.js></script>
-	<script src=js/vendor/ecc.js></script>
-	<script src=js/vendor/particles.min.js></script>
-	<script src=js/vendor/lib.js></script>
-	<script src=js/key_generator.js></script>
-	<script src=js/registration_verifier.js></script>
+	<script src="js/vendor/async.min.js"></script>
+	<script src="js/vendor/moment.min.js"></script>
+	<script src="js/vendor/react.min.js"></script>
+	<script src="js/vendor/react-dom.min.js"></script>
+	<script src="js/vendor/babel.min.js"></script>
+	<script src="js/vendor/ecc.js"></script>
+	<script src="js/vendor/particles.min.js"></script>
+	<script src="js/vendor/lib.js"></script>
+	<script src="js/key_generator.js"></script>
+	<script src="js/registration_verifier.js"></script>
   <script src="js/eosjs-browser.js"></script>
   <script src="js/voting.js"></script>
   <script src="js/scripts.js"></script>

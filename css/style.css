@@ -2351,6 +2351,21 @@ html {
   position: relative;
 }
 
-a.http:hover {
-  color: #ff9258;
+a.http:hover { color: #ff9258; }
+
+.voting-instructions { min-height: 620px; }
+
+.voting-instructions p {
+  font-size: 1.2em;
+  font-weight: 400;
 }
+
+.text-purple { color: #5d46e8; }
+
+.text-smoke { color: #36393D;}
+#vote-system { min-height: 630px !important; }
+.modal.show .modal-dialog { min-width: 52%; }
+.modal.show .modal-dialog h4 small { font-size: 70%; }
+.small-instructions { font-size: 85%; }
+
+.modal.show .modal-dialog .modal-content .modal-footer { justify-content: center; }
