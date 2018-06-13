@@ -34,15 +34,3 @@ $(document).ready(function(){
     }
   });
 });
-
-
-
-$(document).on('click', '.prod-row', function(){
-  $checkbox = $(this).find('input[type="checkbox"]');
-
-  if($checkbox.prop('checked')) {
-    $checkbox.attr('checked', false);
-  } else {
-    $checkbox.attr('checked', true);
-  }
-});
