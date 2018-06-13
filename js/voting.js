@@ -56,6 +56,7 @@ function getEos() {
     }
 
 
+    var protocol = network.slice(0, network.lastIndexOf(":"));
     var ip = network.slice(network.lastIndexOf("/") + 1, network.lastIndexOf(":"));
     var port = network.slice(network.lastIndexOf(":") + 1);
     if (method == "scatter") {
@@ -70,7 +71,7 @@ function getEos() {
             sign: true,
             chainId: "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906"
         }
-        return scatter.eos(scatterNetwork, Eos, config);
+        return scatter.eos(scatterNetwork, Eos, config, protocol);
     }
     else {
         var privateKey = document.getElementById('private-key').value;
