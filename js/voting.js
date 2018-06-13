@@ -89,6 +89,7 @@ function getEos() {
 
 function getProducers() {
     var eos = getEos();
+    console.log('eos: ', eos);
     var params = {
         json: true,
         scope: "eosio",
@@ -144,8 +145,6 @@ function getProducerVotes() {
             <td>${prettyNumber(prod.total_votes)}</td>
         </tr>`)
         .forEach(row => tbody.innerHTML += row);
-
-        $('#vote-totals').modal();
     }).catch(err => {
         var alert = `<div class="alert alert-danger" role="alert">
             Failed to load Block Producers from the Custom Network.
