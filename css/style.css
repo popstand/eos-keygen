@@ -2393,13 +2393,3 @@ a.http:hover { color: #ff9258; }
   align-items: center;
   justify-content: center;
 }
-
-.show-producer-votes {
-  color: white;
-  font-size: 13px;
-}
-
-.show-producer-votes:hover {
-  color: white;
-  text-decoration: underline;
-}
