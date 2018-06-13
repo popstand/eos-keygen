@@ -71,14 +71,16 @@
 						<h5 class="pl-3">EOS Server</h5>
 						<p id="producers-select">
 							<select onchange="getProducers()" class="form-control" id="network">
-								<option value="http://mainnet.libertyblock.io:8888" >EOS Mainnet</option>
+								<option value="https://user-api.eoseoul.io" >EOSeoul.io API</option>
+								<option value="https://eos-api.privex.io" >Privex.io API</option>
 						 </select>
  						</p>
 						<p id="custom-server-input" class="invisible">
 							<input id="custom-network" class="input-round" onblur="getProducers()" placeholder="http://mainnet.eos.io:48888">
 						</p>
 						<div class="custom-server text-right">
-							<small id="eos-small-https" class="eos-small toggle-hidden">** Enter a custom https://name-or-ip:port EOS API endpoint</small><small id="eos-small-http" class="eos-small toggle-hidden">** Enter a custom http://name-or-ip:port EOS API endpoint</small>
+							<small id="eos-small-https" class="eos-small toggle-hidden">** Enter a custom https://name-or-ip:port EOS API endpoint</small>
+							<small id="eos-small-http" class="eos-small toggle-hidden">** Enter a custom http://name-or-ip:port EOS API endpoint</small>
 							<label><input id="custom-server" class="vote-checkbox pr-1" type="checkbox" value="">Use Custom Network</label>
 						</div>
 					</div>
@@ -126,6 +128,9 @@
 				        </tr></thead>
 								<tbody></tbody>
 				    </table>
+					</div>
+					<div class="features-item animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-3" data-animate="fadeInRight" data-delay=".9">
+						<a href='#' onclick="getProducerVotes()">Show Block Producer Vote Standings</a>
 					</div>
 				</div>
 			</div>
@@ -176,6 +181,7 @@
 				</div>
 				<div class="col-lg-5 keys toggle-hidden">
 					<div class="about-image animated" data-animate="fadeInUp" data-delay=".7">
+						<img class="mx-auto d-block mt-3" alt="logo" src="images/eos-logo-color.png" srcset="images/eos-logo-color.png 2x">
 						<div class="generated-keys"></div>
 					</div>
 				</div>
@@ -229,16 +235,16 @@
 	        <div class="modal-body">
 						<div class="row">
 							<div class="col-12 col-xl-8 pt-2">
-								<p class="ml-1 ml-md-4 mt-2 text-smoke">
-									1. The recommended way is to use <a class="menu-link http" href="https://scatter-eos.com/">Scatter</a>
+								<p class="ml-1 ml-sm-5 mt-2 text-smoke">
+									1. The recommended way is to use <a class="menu-link http" target="_blank" href="https://scatter-eos.com/">Scatter</a>
 									<br/>
 									<small class="small-instructions">Scatter plugin for Chrome or Firefox only supports HTTP</small>
 									<br/>
 									<small class="small-instructions ml-1 ml-md-3">
-										&bull; Please <a class="menu-link http" href="http://eos.producer.vote">click here</a> to load the voting system over HTTP
+										&bull; Please <a class="menu-link http" target="_blank" href="http://eos.producer.vote">click here</a> to load the voting system over HTTP
 									</small>
 								</p>
-								<p class="ml-1 ml-md-4 mt-2 text-smoke">
+								<p class="ml-1 ml-sm-5 mt-2 text-smoke">
 									2. HTTPS is required to use your Private Key
 									<br/>
 									<small class="small-instructions">Your private key will never leave your browser</small>
@@ -250,8 +256,8 @@
 									<small class="small-instructions ml-1 ml-md-3">&bull; Please <a class="menu-link http" href="https://eos.producer.vote">click here</a> to load the voting system over HTTPS</small>
 								</p>
 							</div>
-							<div class="col-xl-4 d-none d-xl-block">
-								<img class="pr-5" alt="logo" src="images/eos-black.png">
+							<div class="col-xl-3 d-none d-xl-block pl-0 pt-2">
+								<img alt="logo" src="images/eos-black.png">
 							</div>
 						</div>
 	        </div>
@@ -263,6 +269,41 @@
 	    </div>
 	  </div>
 	<!-- End Section -->
+
+
+	<!-- Vote Totals Modal -->
+	<div class="modal fade" id="vote-totals" role="dialog">
+	    <div class="modal-dialog vote-total-dialog">
+
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header vote-total-header border-0 text-center">
+						<img class="vote-count-logo pr-2" alt="logo" src="images/eos-logo-color.png" srcset="images/eos-logo-color.png 2x">
+	          <h4 class="modal-title text-smoke pl-2">EOS Block Producer Total Votes</h4>
+	        </div>
+	        <div class="modal-body vote-total-body">
+						<div class="row">
+							<table id="total-votes-block-producers" class="table table-sm text-smoke table-striped text-center">
+									<thead class="thead-dark"><tr>
+											<th>Rank</th>
+											<th>Producer Name</th>
+											<th>Votes Cast</th>
+									</tr></thead>
+									<tbody></tbody>
+							</table>
+						</div>
+	        </div>
+	        <div class="modal-footer">
+						<button type="button" class="btn btn-default mt-3" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+
+	    </div>
+	  </div>
+	<!-- End Section -->
+
+
+
 
 	<!-- Preloader !remove please if you do not want -->
 	<div id="preloader">

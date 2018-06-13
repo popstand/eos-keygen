@@ -16,7 +16,7 @@ function toggleKeyInput () {
         privateKeyInput.style.display = "none";
         if (typeof scatter === "undefined") {
             var alert = `<div class="alert alert-danger" role="alert">
-                Scatter is not installed. <a class="menu-link http" href="https://scatter-eos.com/">https://scatter-eos.com/</a> Refresh page after installing.
+                Scatter is not installed. <a class="menu-link http" target="_blank" href="https://scatter-eos.com/">https://scatter-eos.com/</a> Refresh page after installing.
             </div>`
             document.getElementById('alerts').innerHTML = alert;
             return false;
@@ -59,30 +59,30 @@ function getEos() {
     var ip = network.slice(network.lastIndexOf("/") + 1, network.lastIndexOf(":"));
     var port = network.slice(network.lastIndexOf(":") + 1);
     if (method == "scatter") {
-        var network = {
+        var scatterNetwork = {
             blockchain: 'eos',
             host: ip,
             port: port,
-            chainId: "a628a5a6123d6ed60242560f23354c557f4a02826e223bb38aad79ddeb9afbca"
+            chainId: "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906"
         }
         var config = {
             broadcast: true,
             sign: true,
-            chainId: "a628a5a6123d6ed60242560f23354c557f4a02826e223bb38aad79ddeb9afbca"
+            chainId: "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906"
         }
-        return scatter.eos(network, Eos.Testnet, config);
+        return scatter.eos(scatterNetwork, Eos, config);
     }
     else {
         var privateKey = document.getElementById('private-key').value;
         var config = {
-            keyProvider: privateKey,
+            keyProvider: [privateKey],
             httpEndpoint: network,
             broadcast: true,
             sign: true,
-            chainId: "a628a5a6123d6ed60242560f23354c557f4a02826e223bb38aad79ddeb9afbca",
+            chainId: "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906",
             expireInSeconds: 30
         }
-        return Eos.Testnet(config);
+        return Eos(config);
     }
 }
 
@@ -122,6 +122,40 @@ function getProducers() {
 
 }
 
+function getProducerVotes() {
+    var eos = getEos();
+    var params = {
+        json: true,
+        scope: "eosio",
+        code: "eosio",
+        table: "producers",
+        limit: 200
+    }
+    var tbody = document.querySelector("#total-votes-block-producers tbody");
+    tbody.innerHTML = '';
+
+    eos.getTableRows(params).then(resp => {
+
+        var sorted = resp.rows.sort((a,b) => Number(a.total_votes) > Number(b.total_votes) ? -1:1);
+        sorted.map((prod, i) => `<tr class="prod-row">
+            <td>${i+1}</td>
+            <td>${prod.owner}</td>
+            <td>${prettyNumber(prod.total_votes)}</td>
+        </tr>`)
+        .forEach(row => tbody.innerHTML += row);
+
+        $('#vote-totals').modal();
+    }).catch(err => {
+        var alert = `<div class="alert alert-danger" role="alert">
+            Failed to load Block Producers from the Custom Network.
+        </div>`;
+        document.getElementById('alerts').innerHTML = alert;
+
+        document.getElementById('vote').disabled = false;
+    });
+
+}
+
 function getSelectedBPs () {
     var checked = []
     document.getElementsByName('vote-prods').forEach(function (prod) {
@@ -138,7 +172,7 @@ function updateSelectedBPs() {
 }
 
 function prettyNumber(num) {
-    num = parseInt(parseInt(num) / 1e10 * 1.4);
+    num = parseInt(parseInt(num) / 1e10 * 2.67708);
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
 
