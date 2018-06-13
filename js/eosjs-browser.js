@@ -18015,6 +18015,11 @@ function fetchMethod(methodName, url, definition, config) {
     var fetchConfiguration = { body: body, method: 'POST' };
     Object.assign(fetchConfiguration, config.fetchConfiguration);
 
+    if (url.includes("://://")) {
+      var cleanURL = url.replace("://://", "://");
+      url = cleanURL;
+    }
+
     fetch(url, fetchConfiguration).then(function (response) {
       if (response.status >= 200 && response.status < 300) {
         return response.json();
@@ -18113,14 +18118,14 @@ module.exports = {
     bit-wise AND operation is used to keep this value with the size of a Uint16
     size (a block num in the last 2^16 blocks).  Example:
     `get_info.last_irreversible_block_num & 0xFFFF`
-  
+
     @property {number} ref_block_prefix - get_block.ref_block_prefix .. This is
     a 32 bit number identifier (identify the same block referenced in `ref_block_num`).
-  
+
     @property {string} expiration - This is based on the head block time from the
     blockchain.  Be careful to suffix a Z if required (as with Firefox and JavaScript)
     to ensure this date string is interpreted as Zulu time.
-  
+
     Example: `new Date(new Date(info.head_block_time + 'Z').getTime() + expireInSeconds * 1000).toISOString().split('.')[0]`
   */
 
@@ -18128,11 +18133,11 @@ module.exports = {
     Consult the blockchain and gather information for use in a new signed transaction.
     For Transaction as Proof of Stake (TaPOS), 32 bits of a recent block Id is included.
     Because all transactions use TaPOS, this solves the nothing at stake attack.
-  
+
     This is usually called for every transaction or maybe cached per block.  Although
     longer caching may be possible, a longer cache time increases the risk of a
     transaction replay attack.
-  
+
     @arg {number} expireInSeconds - How many seconds until expiration
     @arg {function(error, headers)} callback {@link headers}
     @see {headers}
@@ -18359,13 +18364,13 @@ module.exports = {
 
     /**
         Spec: http://localhost:3002/steem/@dantheman/how-to-encrypt-a-memo-when-transferring-steem
-    
+
         @throws {Error|TypeError} - "Invalid Key, ..."
-    
+
         @arg {PrivateKey} private_key - required and used for decryption
         @arg {PublicKey} public_key - required and used to calcualte the shared secret
         @arg {string} [nonce = uniqueNonce()] - assigned a random unique uint64
-    
+
         @return {object}
         @property {string} nonce - random or unique uint64, provides entropy when re-using the same private/public keys.
         @property {Buffer} message - Plain text message
