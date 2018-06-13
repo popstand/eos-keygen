@@ -117,7 +117,12 @@
 				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-2 order-md-1 order-sm-0 order-0">
 					<div class="gaps"></div>
 					<div class="features-item animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-3" data-animate="fadeInRight" data-delay=".7">
-						<h5 class="pl-3">Block Producers</h5>
+						<h5 class="mb-0">Block Producers</h5>
+
+						<div class="features-item animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-3" data-animate="fadeInRight" data-delay=".9">
+							<a href='#' onclick="getProducerVotes()" class="show-producer-votes">View Block Producer Vote Standings</a>
+						</div>
+
 						<p><input type="search" id="filter-prods" class="input-round" placeholder="Filter Producers" onkeyup="filterProds()"></p>
 					</div>
 					<div class="features-item block-producers animated text-center pr-5" data-animate="fadeInRight" data-delay=".8">
@@ -128,9 +133,6 @@
 				        </tr></thead>
 								<tbody></tbody>
 				    </table>
-					</div>
-					<div class="features-item animated pr-0 pr-md-5 pr-lg-5 pr-xl-5 pb-3" data-animate="fadeInRight" data-delay=".9">
-						<a href='#' onclick="getProducerVotes()">Show Block Producer Vote Standings</a>
 					</div>
 				</div>
 			</div>
