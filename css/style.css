@@ -2368,6 +2368,12 @@ a.http:hover { color: #ff9258; }
 @media (min-width: 576px){ .modal-dialog {min-width: 52% !important;}}
 .modal.show .modal-dialog h4 small { font-size: 70%; }
 
+.instructions-bg {
+  background-image: url(../images/eos-black.png);
+  background-position: 86% 50%;
+  background-size: 20%;
+  background-repeat: no-repeat;
+}
 
 .small-instructions { font-size: 85%; }
 

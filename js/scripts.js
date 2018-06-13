@@ -2,8 +2,6 @@ $(document).ready(function(){
   $('#instructions').modal('show');
   if (location.protocol != 'https:') {
     $('#sign-private, #private-key').hide();
-  } else {
-    $('#sign-scatter').hide();
   }
 
   $("#custom-server").click(function() {
