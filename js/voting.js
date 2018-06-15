@@ -130,7 +130,7 @@ function getProducerVotes() {
     scope: "eosio",
     code: "eosio",
     table: "producers",
-    limit: 200
+    limit: 700
   }
   var tbody = document.querySelector("#total-votes-block-producers tbody");
   tbody.innerHTML = '';
