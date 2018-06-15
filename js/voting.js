@@ -89,7 +89,6 @@ function getEos() {
 
 function getProducers() {
   var eos = getEos();
-  console.log('eos: ', eos);
   var params = {
       json: true,
       scope: "eosio",

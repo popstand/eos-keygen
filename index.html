@@ -37,10 +37,10 @@
 
 				<div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
 					<ul class="navbar-nav animated remove-animation" data-animate="fadeInDown" data-delay="1.6">
-						<li class="nav-item"><a class="nav-link menu-link" href="#vote-section">Cast Vote</a></li>
-						<li class="nav-item"><a class="nav-link menu-link" href="#block-producer-standings-section" onclick="getProducerVotes()">Block Producer Vote Standings</a></li>
+						<li class="nav-item"><a id="standings"  class="nav-link menu-link" href="#vote-section" onclick="getProducerVotes()">Block Producer Vote Standings</a></li>
 						<li class="nav-item"><a class="nav-link menu-link" href="#verify-registration-section">Verify Registration</a></li>
 						<li class="nav-item"><a class="nav-link menu-link" href="#keypair-generation-section">Keypair Generation</a></li>
+						<li class="nav-item"><a id="vote" class="nav-link btn btn-white mt-2" href="#">Vote Now!</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -59,13 +59,14 @@
 			</div>
 		</div>
 		<div class="container">
-			<div class="section-head-s3 text-center mb-4">
-				<h1 class="section-title animated" data-animate="fadeInDown" data-delay=".2">EOS <span class="heading-alt">Block Producer</span> Voting</h1>
+			<div class="section-head-s3 text-center mb-4 mt-4">
+				<h1 id="votes-heading"class="section-title animated invisible" data-animate="fadeInDown" data-delay=".2">EOS <span class="heading-alt">Block Producer</span> Voting</h1>
+				<h1 id="standings-heading" class="section-title animated" data-animate="fadeInDown" data-delay=".2">EOS <span class="heading-alt">Block Producer</span> Vote Standings</h1>
 			</div>
 			<section id="alerts">
 					<div class="alert alert-warning toggle-hidden" role="alert"></div>
 			</section>
-			<div id="vote-system" class="row pt-1">
+			<div id="vote-system" class="row pt-1 invisible">
 				<div class="col-lg-6 col-md-6 col-sm-12 order-lg-0 order-md-0 order-sm-1 order-1">
 					<div class="gaps"></div>
 					<div class="features-item animated pl-0 pl-md-5 pl-lg-5 pl-xl-5 pb-3" data-animate="fadeInLeft" data-delay=".4">
@@ -132,33 +133,22 @@
 					</div>
 				</div>
 			</div>
+			<div id="standings-system" class="row pt-1 text-center vote-total-body animated" data-animate="fadeInUp" data-delay=".4">
+				<div class="gaps size-2x"></div>
+				<table id="total-votes-block-producers" class="table table-sm text-white table-striped text-center">
+					<thead class="thead-dark"><tr>
+						<th>Rank</th>
+						<th>Producer Name</th>
+						<th>Votes Cast</th>
+					</tr></thead>
+					<tbody></tbody>
+				</table>
+				<div class="gaps size-2x"></div>
+			</div>
 		</div><!-- .container  -->
 	</div>
 	<!-- End Section -->
 
-	<!-- Start Section -->
-	<div class="section reason-scetion section-pad pt-5 no-pb mb-2 section-bg-light" id="block-producer-standings-section">
-		<div class="container">
-			<div class="section-head-s3 mb-5 text-center">
-				<h2 class="section-title animated" data-animate="fadeInUp" data-delay=".1">Block Producer Vote Standings</h2>
-			</div>
-			<div class="shadow round-md plr-x4 vote-total-dialog">
-				<div class="gaps size-2x"></div>
-				<div class="row text-center vote-total-body">
-					<table id="total-votes-block-producers" class="table table-sm text-smoke table-striped text-center">
-						<thead class="thead-dark"><tr>
-							<th>Rank</th>
-							<th>Producer Name</th>
-							<th>Votes Cast</th>
-						</tr></thead>
-						<tbody></tbody>
-					</table>
-				</div><!-- .row  -->
-				<div class="gaps size-2x"></div>
-			</div>
-		</div><!-- .container  -->
-	</div>
-	<!-- End Section -->
 
 	<!-- Start Section -->
 	<div id="verify-registration-section" class="section subscribe-scetion section-pad section-bg-light" id="subscribe">

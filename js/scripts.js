@@ -1,10 +1,26 @@
 $(document).ready(function(){
-  $('#instructions').modal('show');
+  getProducerVotes();
+
   if (location.protocol != 'https:') {
     $('#sign-private, #private-key').hide();
   }
-  
-  getProducerVotes();
+
+  $("#vote").click(function(){
+    getProducers();
+    $('#instructions').modal('show');
+    $("#votes-heading").removeClass('invisible');
+    $("#vote-system").removeClass('invisible');
+    $("#standings-heading").addClass('invisible');
+    $("#standings-system").addClass('invisible');
+  });
+
+  $("#standings").click(function(){
+    getProducerVotes();
+    $("#votes-heading").addClass('invisible');
+    $("#vote-system").addClass('invisible');
+    $("#standings-heading").removeClass('invisible');
+    $("#standings-system").removeClass('invisible');
+  });
 
   $("#custom-server").click(function() {
     if (location.protocol == 'https:') {

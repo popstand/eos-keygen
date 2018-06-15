@@ -2363,7 +2363,7 @@ a.http:hover { color: #ff9258; }
 .text-purple { color: #5d46e8; }
 
 .text-smoke { color: #36393D;}
-#vote-system { min-height: 630px !important; }
+#vote-system, #standings-system { min-height: 610px !important; }
 .modal.show .modal-dialog { min-width: 52%; }
 @media (min-width: 576px){ .modal-dialog {min-width: 52% !important;}}
 .modal.show .modal-dialog h4 small { font-size: 70%; }
