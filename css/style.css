@@ -2368,6 +2368,16 @@ a.http:hover { color: #ff9258; }
 @media (min-width: 576px){ .modal-dialog {min-width: 52% !important;}}
 .modal.show .modal-dialog h4 small { font-size: 70%; }
 
+
+.btn-blue {
+  background-color: #46bdf4 !important;
+  color: #fff !important;
+}
+.btn-blue:hover {
+  background-color: #f98e58 !important;
+  color: #fff !important;
+}
+
 .small-instructions {
   font-size: 90%;
   font-weight: 500;
