@@ -122,6 +122,23 @@ function getProducers() {
   });
 }
 
+function totalWeight() {
+  var eos = getEos();
+  var chain_params = {
+    json: true,
+    scope: "eosio",
+    code: "eosio",
+    table: "global",
+    limit: 1
+  }
+
+  eos.getTableRows(chain_params).then(resp => {
+    document.getElementById("voteWeight").value = resp.rows[0].total_producer_vote_weight;
+  }).catch(err => {
+    console.log("err: ", err);
+  });
+}
+
 function getProducerVotes() {
   var eos = getEos();
   var params = {
@@ -135,11 +152,13 @@ function getProducerVotes() {
   tbody.innerHTML = '';
 
   eos.getTableRows(params).then(resp => {
-
     var sorted = resp.rows.sort((a,b) => Number(a.total_votes) > Number(b.total_votes) ? -1:1);
+    var weight = totalWeightValue();
+
     sorted.map((prod, i) => `<tr class="prod-row">
         <td>${i+1}</td>
-        <td>${prod.owner}</td>
+        <td><a href="${prod.url}" target="_blank">${prod.owner}</a></td>
+        <td>${(prod.total_votes / weight * 100).toFixed(3)}%</td>
         <td>${numberWithCommas((prod.total_votes  / calculateVoteWeight() / 10000).toFixed(0))}</td>
     </tr>`)
     .forEach(row => tbody.innerHTML += row);
@@ -172,6 +191,13 @@ function updateSelectedBPs() {
 function prettyNumber(num) {
   num = parseInt(parseInt(num) / 1e10 * 2.67708);
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}
+
+function totalWeightValue() {
+  var weight = document.getElementById("voteWeight").value;
+  var precision = weight.split(".")[1];
+
+  return parseFloat(weight).toFixed(precision.length);
 }
 
 function calculateVoteWeight() {

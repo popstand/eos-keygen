@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  getProducerVotes();
+  totalWeight();
 
   if (location.protocol != 'https:') {
     $('#sign-private, #private-key').hide();
@@ -49,4 +49,6 @@ $(document).ready(function(){
       }
     }
   });
+
+  getProducerVotes();
 });
