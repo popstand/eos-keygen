@@ -702,7 +702,8 @@ select:focus { outline: none; border: none; }
 .navbar .navbar-nav > li > a.nav-link.btn.active:after { opacity: 0; }
 .navbar .navbar-nav > li > a.nav-link.btn.active:before { opacity: 1; }
 .navbar .navbar-nav > li > a.nav-link.btn:hover { color: #fff; }
-.navbar .navbar-nav > li > a.nav-link.active { color: #46bdf4; background: transparent; }
+.navbar .navbar-nav > li > a.nav-link.active { color: #fff !important; background: transparent; }
+.site-header.has-fixed .navbar-nav > li > a.nav-link.active { color: #46bdf4 !important; }
 .navbar .navbar-nav > li > .dropdown-menu .nav-opened .dropdown-menu, .navbar .navbar-nav > li > .dropdown-menu .dropdown-menu { top: 0; margin-top: 0; }
 .navbar .navbar-nav > li.nav-opened > .dropdown-menu, .navbar .navbar-nav > li:hover > .dropdown-menu { top: 100%; opacity: 1; visibility: visible; }
 .navbar .navbar-nav.rollover .dropdown-menu { z-index: 1010; }

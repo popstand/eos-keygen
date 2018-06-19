@@ -157,7 +157,7 @@ function getProducerVotes() {
 
     sorted.map((prod, i) => `<tr class="prod-row">
         <td>${i+1}</td>
-        <td><a href="${prod.url}" target="_blank">${prod.owner}</a></td>
+        <td><u><a href="${prod.url}" class="text-white" target="_blank">${prod.owner}</a><u></td>
         <td>${(prod.total_votes / weight * 100).toFixed(3)}%</td>
         <td>${numberWithCommas((prod.total_votes  / calculateVoteWeight() / 10000).toFixed(0))}</td>
     </tr>`)
